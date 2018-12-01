@@ -105,15 +105,10 @@ class MyProxyMiddleware():
             #print("返回无代理请求")
             return request
         else:
-            while(True):
-                try:
-                    daili  = self.pro.ips[random.randint(0,len(self.pro.ips))]
-                except Exception as e:
-                    continue
-                break
-            #print(daili[1])
+            daili = random.choice(self.pro.ips)
+            print(daili[1])
             request.meta['proxy'] = daili[1]
-            #print("返回有代理请求")
+            print("返回有代理请求")
             return request
     
 
